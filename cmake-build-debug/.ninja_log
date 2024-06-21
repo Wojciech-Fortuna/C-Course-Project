@@ -1,0 +1,12 @@
+# ninja log v5
+5	359	7405742396549288	build.ninja	99f0d24356c49d5b
+50	2696	7405703953387540	CMakeFiles/HappyWeather.dir/sdl_functions.cpp.obj	bbeaf245a73e79b1
+40	6520	7405622657731444	CMakeFiles/HappyWeather.dir/weatherData.cpp.obj	a8f11f6e7963ff0d
+7	689	7405626393563056	CMakeFiles/HappyWeather.dir/main.cpp.obj	4e6e5ebbd91ccd26
+7	1051	7405695683653753	CMakeFiles/HappyWeather.dir/nr_days.cpp.obj	4a28210c166aefc
+3360	9665	7405703968788647	HappyWeather.exe	fafb98266971edb7
+5	1679	7404114151209930	CMakeFiles/HappyWeather.dir/test_window.cpp.obj	5971aa89313be939
+43	3360	7405703960058011	CMakeFiles/HappyWeather.dir/sdl_window.cpp.obj	8479fc61cf8ebd02
+56	2699	7405703953377522	CMakeFiles/HappyWeather.dir/settingsWindow.cpp.obj	1f16c361b397c09f
+13	3780	7405742493831031	CMakeFiles/HappyWeather.dir/sdl_window.cpp.obj	8479fc61cf8ebd02
+3781	17226	7405742511376292	HappyWeather.exe	fafb98266971edb7

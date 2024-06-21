@@ -1,0 +1,7 @@
+"C:\Program Files\JetBrains\CLion 2023.3.4\bin\cmake\win\x64\bin\cmake.exe" -DCMAKE_BUILD_TYPE=Debug "-DCMAKE_MAKE_PROGRAM=C:/Program Files/JetBrains/CLion 2023.3.4/bin/ninja/win/x64/ninja.exe" "-DCMAKE_TOOLCHAIN_FILE=C:/Users/Wojciech Fortuna/vcpkg/scripts/buildsystems/vcpkg.cmake" -G Ninja -S "C:\Users\Wojciech Fortuna\CLionProjects\HappyWeather" -B "C:\Users\Wojciech Fortuna\CLionProjects\HappyWeather\cmake-build-debug"
+-- Found ZLIB: optimized;C:/Users/Wojciech Fortuna/vcpkg/installed/x64-windows/lib/zlib.lib;debug;C:/Users/Wojciech Fortuna/vcpkg/installed/x64-windows/debug/lib/zlibd.lib (found suitable version "1.3.1", minimum required is "1")  
+-- Found ZLIB: optimized;C:/Users/Wojciech Fortuna/vcpkg/installed/x64-windows/lib/zlib.lib;debug;C:/Users/Wojciech Fortuna/vcpkg/installed/x64-windows/debug/lib/zlibd.lib (found version "1.3.1")  
+Using vcpkg toolchain file: C:/Users/Wojciech Fortuna/vcpkg/scripts/buildsystems/vcpkg.cmake
+-- Configuring done (0.7s)
+-- Generating done (0.1s)
+-- Build files have been written to: C:/Users/Wojciech Fortuna/CLionProjects/HappyWeather/cmake-build-debug

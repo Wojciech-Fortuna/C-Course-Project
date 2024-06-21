@@ -1,0 +1,3 @@
+C:/Users/Wojciech Fortuna/CLionProjects/HappyWeather/cmake-build-debug/CMakeFiles/HappyWeather.dir
+C:/Users/Wojciech Fortuna/CLionProjects/HappyWeather/cmake-build-debug/CMakeFiles/edit_cache.dir
+C:/Users/Wojciech Fortuna/CLionProjects/HappyWeather/cmake-build-debug/CMakeFiles/rebuild_cache.dir
