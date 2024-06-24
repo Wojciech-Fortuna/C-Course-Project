@@ -81,14 +81,17 @@ void createSettingsWindow(SDL_Event &e, int &forecastDays, std::string &location
         return;
     }
 
-    SDL_Rect forecastInputRect = {50, 150, 300, 50};
+    SDL_Rect forecastInputRect = {50, 100, 300, 50};
     SDL_Rect locationInputRect = {50, 300, 300, 50};
 
-    SDL_Rect forecastSaveRect = {350, 150, 150, 50};
+    SDL_Rect forecastSaveRect = {350, 100, 150, 50};
     SDL_Rect locationSaveRect = {350, 300, 150, 50};
 
-    SDL_Rect forecastErrorRect = {50, 200, 300, 50};
+    SDL_Rect forecastErrorRect = {50, 150, 300, 50};
     SDL_Rect locationErrorRect = {50, 350, 300, 50};
+
+    SDL_Rect forecastTextRect = {50, 50, 300, 50};
+    SDL_Rect locationTextRect = {50, 250, 300, 50};
 
 
     bool settingsQuit = false;
@@ -111,7 +114,6 @@ void createSettingsWindow(SDL_Event &e, int &forecastDays, std::string &location
     std::string locationErrorMessage;
 
     SDL_Rect closeButton = {0, 430, 100, 50};
-
 
 
     SDL_Event settingsEvent;
@@ -251,6 +253,14 @@ void createSettingsWindow(SDL_Event &e, int &forecastDays, std::string &location
         SDL_SetRenderDrawColor(settingsRen, 0, 255, 0, 255);
         SDL_RenderFillRect(settingsRen, &locationSaveRect);
         renderText(settingsRen, font, "Save", locationSaveRect);
+
+        SDL_SetRenderDrawColor(settingsRen, 255, 255, 0, 255);
+        SDL_RenderFillRect(settingsRen, &forecastTextRect);
+        renderText(settingsRen, font, "Liczba dni:", forecastTextRect);
+
+        SDL_SetRenderDrawColor(settingsRen, 255, 255, 0, 255);
+        SDL_RenderFillRect(settingsRen, &locationTextRect);
+        renderText(settingsRen, font, "Lokalizacja", locationTextRect);
 
         if (!forecastErrorMessage.empty()){
             SDL_SetRenderDrawColor(settingsRen, 255, 0, 0, 255);
