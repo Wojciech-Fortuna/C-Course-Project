@@ -1,7 +1,3 @@
-//
-// Created by Wojciech Fortuna on 20.06.2024.
-//
-
 #ifndef HAPPYWEATHER_NR_DAYS_H
 #define HAPPYWEATHER_NR_DAYS_H
 

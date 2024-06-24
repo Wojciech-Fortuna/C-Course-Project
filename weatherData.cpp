@@ -2,10 +2,10 @@
 #include <curl/curl.h>
 #include <nlohmann/json.hpp>
 #include <vector>
+#include <algorithm>
+
 
 using json = nlohmann::json;
-
-#include "weatherData.h"
 
 static size_t WriteCallback(void* contents, size_t size, size_t nmemb, void* userp)
 {
@@ -13,7 +13,7 @@ static size_t WriteCallback(void* contents, size_t size, size_t nmemb, void* use
     return size * nmemb;
 }
 
-void getWeatherData(const std::string& apiKey, const std::string& location,
+void getWeatherData(std::string& apiKey, std::string& location,
                     std::vector<std::string>& iconCodeList, std::vector<std::string>& temperatureList,
                     std::vector<std::string>& descriptionList, std::vector<std::string>& mainDescriptionList,
                     std::vector<std::string>& timeList)
@@ -37,8 +37,6 @@ void getWeatherData(const std::string& apiKey, const std::string& location,
             try {
                 auto jsonData = json::parse(readBuffer);
                 for (auto& day : jsonData["list"]) {
-                    //std::string dateTime = day["dt_txt"];
-
                     std::string iconCode = day["weather"][0]["icon"];
                     iconCodeList.push_back(iconCode);
 
@@ -52,10 +50,9 @@ void getWeatherData(const std::string& apiKey, const std::string& location,
                     descriptionList.push_back(description);
 
                     std::string main_description = day["weather"][0]["main"];
-                    mainDescriptionList.push_back(description);
+                    mainDescriptionList.push_back(main_description);
 
                     std::string time = day["dt_txt"];
-                    std::cout << time << std::endl;
                     time.erase(time.size() - 3);
                     timeList.push_back(time);
                 }
@@ -64,7 +61,7 @@ void getWeatherData(const std::string& apiKey, const std::string& location,
             }
         }
     }
-    else{
+    else {
         std::cerr << "curl wasn't initialized properly" << std::endl;
     }
 }
@@ -99,20 +96,25 @@ void downloadIcon(const std::string& iconCode, const std::string& iconPath) {
     }
 }
 
+void sliceList(std::vector<std::string>& newList, std::vector<std::string>& oldList, int forecastDays){
+    auto begin = std::make_move_iterator(oldList.begin());
+    size_t minSize = std::min(static_cast<size_t>(forecastDays * 8), oldList.size());
+    auto end = std::make_move_iterator(oldList.begin() + minSize);
+    newList.insert(newList.begin(), begin, end);
+}
 
 void getCurrentData(std::vector<std::string>& iconPathList_gl, std::vector<std::string>& temperatureList_gl,
-                   std::vector<std::string>& descriptionList_gl, std::vector<std::string>& mainDescriptionList_gl,
-                   std::vector<std::string>& timeList_gl)
+                    std::vector<std::string>& descriptionList_gl, std::vector<std::string>& mainDescriptionList_gl,
+                    std::vector<std::string>& timeList_gl, int forecastDays, std::string& location)
 {
     std::string apiKey = "d3a1b957fdd0c0e08c71578f47875320";
-    std::string location = "Cracow";
 
-    std::vector<std::string> iconPathList;
     std::vector<std::string> iconCodeList;
     std::vector<std::string> temperatureList;
     std::vector<std::string> descriptionList;
     std::vector<std::string> mainDescriptionList;
     std::vector<std::string> timeList;
+    std::vector<std::string> iconPathList;
 
     getWeatherData(apiKey, location, iconCodeList, temperatureList, descriptionList, mainDescriptionList, timeList);
 
@@ -123,14 +125,15 @@ void getCurrentData(std::vector<std::string>& iconPathList_gl, std::vector<std::
         iconPathList.push_back(iconPath);
         nr++;
     }
+
     iconPathList_gl.clear();
-    iconPathList_gl = iconPathList;
+    sliceList(iconPathList_gl, iconPathList, forecastDays);
     temperatureList_gl.clear();
-    temperatureList_gl = temperatureList;
+    sliceList(temperatureList_gl, temperatureList, forecastDays);
     descriptionList_gl.clear();
-    descriptionList_gl = descriptionList;
+    sliceList(descriptionList_gl, descriptionList, forecastDays);
     mainDescriptionList_gl.clear();
-    mainDescriptionList_gl = mainDescriptionList;
+    sliceList(mainDescriptionList_gl, mainDescriptionList, forecastDays);
     timeList_gl.clear();
-    timeList_gl = timeList;
+    sliceList(timeList_gl, timeList, forecastDays);
 }

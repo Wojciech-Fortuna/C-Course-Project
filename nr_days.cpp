@@ -30,10 +30,5 @@ int categorizeWeatherByDay(const std::vector<std::string>& timeList,
 
     }
 
-    std::cout << "Days with rain:" << std::endl;
-    for (const auto& entry : dayWithRain) {
-        std::cout << entry.first << std::endl;
-    }
-
     return dayWithRain.size();
 }
